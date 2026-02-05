@@ -57,9 +57,9 @@
 - [x] UI polish (Catppuccin theme, card layout, highlighting, copy buttons)
 
 ## Milestone 8: Packaging
-- [ ] Build macOS binary
-- [ ] Build Windows binary
-- [ ] Test on both platforms
+- [x] Build macOS binary (7.3MB release, arm64)
+- [x] GitHub Actions workflow for macOS (arm64 + x64) and Windows
+- [ ] Test on both platforms (push to GitHub, trigger workflow)
 
 ---
 *Last updated: 2026-02-05*

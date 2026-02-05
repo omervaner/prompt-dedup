@@ -28,7 +28,7 @@ Rust GUI app to deduplicate image generation prompts (~20k lines).
 - Status bar with success/error messages (auto-clears after 5s)
 
 ## Last Session
-2026-02-05: Completed Milestone 7 (Export with status bar for success/error feedback).
+2026-02-05: Completed Milestone 7-8. macOS release binary built. GitHub Actions workflow for cross-platform builds (macOS arm64/x64 + Windows).
 
 ---
 *Update this file at end of each session. Keep it SHORT.*
