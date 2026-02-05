@@ -35,19 +35,27 @@ jobs:
       - name: Build release
         run: cargo build --release --target ${{ matrix.target }}
 
+      - name: Rename binary (unix)
+        if: runner.os != 'Windows'
+        run: cp target/${{ matrix.target }}/release/prompt-dedup target/${{ matrix.target }}/release/${{ matrix.artifact }}
+
+      - name: Rename binary (windows)
+        if: runner.os == 'Windows'
+        run: copy target\${{ matrix.target }}\release\prompt-dedup.exe target\${{ matrix.target }}\release\${{ matrix.artifact }}.exe
+
       - name: Upload artifact (unix)
         if: runner.os != 'Windows'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact }}
-          path: target/${{ matrix.target }}/release/prompt-dedup
+          path: target/${{ matrix.target }}/release/${{ matrix.artifact }}
 
       - name: Upload artifact (windows)
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact }}
-          path: target/${{ matrix.target }}/release/prompt-dedup.exe
+          path: target/${{ matrix.target }}/release/${{ matrix.artifact }}.exe
 
   release:
     needs: build
