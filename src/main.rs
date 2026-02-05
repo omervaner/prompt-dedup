@@ -55,9 +55,23 @@ fn setup_catppuccin_theme(ctx: &egui::Context) {
     ctx.set_visuals(visuals);
 }
 
+fn load_icon() -> egui::IconData {
+    let icon_bytes = include_bytes!("../assets/icon.png");
+    let icon_image = image::load_from_memory(icon_bytes).expect("Failed to load icon").to_rgba8();
+    let (width, height) = icon_image.dimensions();
+    egui::IconData {
+        rgba: icon_image.into_raw(),
+        width,
+        height,
+    }
+}
+
 fn main() -> eframe::Result<()> {
+    let icon = load_icon();
     let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default().with_inner_size([1000.0, 750.0]),
+        viewport: egui::ViewportBuilder::default()
+            .with_inner_size([1000.0, 750.0])
+            .with_icon(icon),
         ..Default::default()
     };
 
